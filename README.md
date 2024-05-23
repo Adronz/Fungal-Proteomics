@@ -7,36 +7,20 @@ Investigating phylogenetics allows researchers to understand organisms' position
 ## Introduction 
 
 Investigating phylogenetics allows researchers to understand organisms relative to where they are in the broader tree of life. Knowing an organism's tree allows scientists to more quickly identify special properties or weaknesses, such as knowing the correct antibiotic to a bacterial infection [3]. Many species of fungi have special properties–the most notable being penicillin–making them a promising source of novel compounds. Unfortunately, there is significant disagreement in the field surrounding the contents of certain clades, making it difficult to confidently research related organisms. 
-Classically, phylogeny and taxonomy are generated through identifying physical characteristics and genomic/metagenomic analysis. However, these methods often produce conflicting answers, which is particularly troublesome in a kingdom as large as Fungi. Because of the challenges of creating a cohesive phylogenetic tree, it is necessary to broaden the types of available data for investigation. Proteomics provides a potential piece of the puzzle, since it has been used to create phylogenetic trees [1]. 
+ Classically, phylogeny and taxonomy are generated through identifying physical characteristics and genomic/metagenomic analysis. However, these methods often produce conflicting answers, which is particularly troublesome in a kingdom as large as Fungi. Because of the challenges of creating a cohesive phylogenetic tree, it is necessary to broaden the types of available data for investigation. Proteomics provides a potential piece of the puzzle, since it has been used to create phylogenetic trees [1]. 
 The protein-based tree in the paper by Choi and Kim (2017) also contains discrepancies with gene-based trees. This paper uses Uniform Manifold Approximation and Reduction (UMAP) to find relationships between the protein domains of 886 fungal organisms. Our aim is to show that UMAP can effectively reconstruct existing phylogenies from protein domains, and potentially help settle debates over the proper classifications of fungi. 
 
 ## Results
 
 ### UMAP projections 
 
-The data visualizations from the UMAP projections form strong clusters using the ‘cosine’ metric and k=12 nearest neighbors. The clusters appeared to be maintained when the supervised learning function was provided the known phylogenetic category at increasing depths for each organism. 
-
-Fig. 1 2D UMAP projections showing maintained clusters at increasing phylogenetic depth. The supervised learning component moves clusters around, but the content of the clusters remains largely the same. 
-
-The consistency of the clusters indicates that UMAP may be finding relevant patterns in the proteomic dataset that can be used to accurately group related organisms together, even without ground truth labels. Fig. 2 Unsupervised 2D UMAP projection. This projection is made purely from patterns within the proteomic domains. 
-
-In particular yeasts, aspergillus/penicillium, and psilocybe’s retained strong clusters even at a depth of 8. These data are very promising for using proteomics to construct phylogenies. 
-
-Comparison to existing phylogenies 
-
-The next step in this project is comparing the clusters to existing phylogenies, as well as scoring the internal consistency of the clusters created by UMAP. 
+The data visualizations from the UMAP projections form strong clusters using the ‘cosine’ metric and k=12 nearest neighbors. The clusters appeared to be maintained when the supervised learning function was provided the known phylogenetic category at increasing depths for each organism. The consistency of the clusters indicates that UMAP may be finding relevant patterns in the proteomic dataset that can be used to accurately group related organisms together, even without ground truth labels. In particular yeasts, aspergillus/penicillium, and psilocybe’s retained strong clusters even at a depth of 8. These data are very promising for using proteomics to construct phylogenies. 
 
 ## Methods
 
 ### Data 
 
-This project used data collected from n=886 different fungal organisms, each with n=17143 protein domains that could be analyzed. Each sample also had its previously known phylogeny characterized in a separate CSV file.
- 
-
-Fig. 3 Subset of the existing taxonomy for each organism. The organisms are organized by ID to ease computation. 
-
-Likely due to the fragility of certain fungal species, some phylogenies were left incomplete. In addition, some trees were far more extensive than others, making it necessary to augment the data with a label if one did not exist at that depth. This may have impacted the effectiveness of supervised learning at high depth because it would weight the mapping of organisms by whether or not they had complete trees. 
-It is important to note that Dikarya is by far the most commonly characterized clade[4] . In the dataset used, the two subdivisions of Dikarya, Ascomycota and Basidiomycota, comprised 68% and 23% of the samples respectively.
+This project used data collected from n=886 different fungal organisms, each with n=17143 protein domains that could be analyzed. Each sample also had its previously known phylogeny characterized in a separate CSV file. Likely due to the fragility of certain fungal species, some phylogenies were left incomplete. In addition, some trees were far more extensive than others, making it necessary to augment the data with a label if one did not exist at that depth. This may have impacted the effectiveness of supervised learning at high depth because it would weight the mapping of organisms by whether or not they had complete trees. It is important to note that Dikarya is by far the most commonly characterized clade[4] . In the dataset used, the two subdivisions of Dikarya, Ascomycota and Basidiomycota, comprised 68% and 23% of the samples respectively.
 
 
 ### UMAP
